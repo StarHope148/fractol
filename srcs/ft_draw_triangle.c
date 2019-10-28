@@ -6,13 +6,13 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:48:37 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/28 16:54:18 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/10/28 16:55:05 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void    ft_draw_triangle(t_point A, t_point B, t_point C)
+void    ft_draw_triangle(t_env *frct, t_point A, t_point B, t_point C)
 {
     t_point cur;
     t_point next;
