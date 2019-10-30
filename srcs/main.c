@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 14:53:23 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/29 20:33:48 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/10/30 13:13:02 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 */
 //__attribute__((destructor)) void no_end(void);
 
-int		ft_error(int error)
+int		ft_error()
 {
 	ft_putendl_fd("an error occured", 2);
 	return (EXIT_FAILURE);
@@ -24,7 +24,7 @@ int		ft_error(int error)
 
 int		ft_usage(void)
 {
-	ft_putendl_fd("usage: ./fdf [fractal]\n\n\t\tSierpinski\n\t\tMandelbrot\n\t\tJulia", 2);
+	ft_putendl_fd("usage: ./fdf [fractal]\n\n-> Sierpinski\n-> Mandelbrot\n-> Julia", 2);
 	return (EXIT_FAILURE);
 }
 
@@ -33,7 +33,7 @@ int		main(int ac, char **av)
 	if (ac != 2)
 		return (ft_usage());
 	if (ft_strcmp(av[1], "/dev/zero") == 0)
-		return (ft_error(-5));
+		return (ft_error());
 	if (ft_fractol(av[1]) == -1)
 		return (-1);
 	/* if ((error = ft_check_file(av[1])) < 0)

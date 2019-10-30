@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:20:17 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/29 19:27:54 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:04:17 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ int		ft_link_points(t_env *frct)
 	t_point pB;
 	t_point pC;
 
-	pA.x = 0;
-	pA.y = 800;
-	pB.x = 1000;
-	pB.y = 800;
-	pC.x = 500;
-	pC.y = 200;
+	pA.x = frct->width * 0.1;
+	pA.y = frct->height * 0.9;
+	pB.x = frct->width * 0.9;
+	pB.y = frct->height * 0.9;
+	pC.x = frct->width * 0.5;
+	pC.y = frct->height * 0.1;
 	if (frct->fractal == SIERPINSKI)
 		ft_sierpinski(frct, pA, pB, pC, frct->iter);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:34:34 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/29 20:36:52 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/10/30 14:18:29 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,37 @@ typedef enum	e_fractal
 	JULIA
 }				t_fractal;
 
+typedef struct 	s_complex
+{
+    float 		real;
+    float 		imaginary;
+} 				t_complex;
+
 typedef struct  s_point
 {
-    int     x;
-    int     y;
+    int     	x;
+    int     	y;
 }               t_point;
 
 typedef struct	s_env
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*img_ptr;
-	int				*data;
-	int				width;
-	int				height;
-	int				bpp;
-	int				size_l;
-	int				endian;
-	int				fractal;
-	int				iter;
-	int				dx;
-	int				sx;
-	int				dy;
-	int				sy;
-	int				err;
-	int				e2;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*img_ptr;
+	int			*data;
+	int			width;
+	int			height;
+	int			bpp;
+	int			size_l;
+	int			endian;
+	int			fractal;
+	int			iter;
+	int			dx;
+	int			sx;
+	int			dy;
+	int			sy;
+	int			err;
+	int			e2;
 }				t_env;
 
 int			ft_fractol(char *filename);
@@ -66,7 +72,7 @@ void		bresenham(t_env *frct, t_point A, t_point B);
 int			ft_link_points(t_env *frct);
 int			ft_usage(void);
 int			ft_key_hook(int keycode, t_env *frct);
-int			ft_mouse_hook(int keycode, t_env *frct);
+int			ft_mouse_hook(int keycode, int x, int y, t_env *frct);
 void		ft_iteration(t_env *frct, int keycode);
 
 #endif
