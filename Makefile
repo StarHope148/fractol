@@ -6,18 +6,26 @@
 #    By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 11:22:48 by jcanteau          #+#    #+#              #
-#    Updated: 2019/10/28 16:18:20 by jcanteau         ###   ########.fr        #
+#    Updated: 2019/10/29 20:39:32 by jcanteau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 INC_NAME += fractol.h
+INC_NAME += keys.h
+SRC_NAMe += colors.h
 
 SRC_NAME += main.c
 SRC_NAME += fractol.c
 SRC_NAME += mlx_start_up.c
-# SRC_NAME += bresenham.c
+SRC_NAME += image.c
+SRC_NAME += sierpinski.c
+SRC_NAME += ft_draw_triangle.c
+SRC_NAME += bresenham.c
+SRC_NAME += key_hook.c
+SRC_NAME += controls.c
+SRC_NAME += mouse_hook.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

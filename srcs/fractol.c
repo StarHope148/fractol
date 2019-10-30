@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 15:04:58 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/28 16:11:00 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/10/29 19:25:53 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ void		ft_init_env(t_env *fdf)
 	fdf->win_ptr = NULL;
 	fdf->img_ptr = NULL;
 	fdf->data = NULL;
-	fdf->width = 2000;
-	fdf->height = 1200;
+	fdf->width = 1000;
+	fdf->height = 1000;
 	fdf->bpp = 0;
 	fdf->size_l = 0;
 	fdf->endian = 0;
+	fdf->fractal = 0;
+	fdf->iter = 0;
 	/* ft_init_map(fdf);
 	ft_init_display(fdf);
 	ft_init_menu(fdf);
@@ -55,15 +57,18 @@ void		ft_init_env(t_env *fdf)
 		fdf->fl = 50;
 } */
 
-int			ft_fractol(char *filename)
+int			ft_fractol(char *fractal)
 {
 	t_env		frct;
 
-	(void)filename;
 	ft_init_env(&frct);
 	/* if (ft_create_map(&fdf, filename) == -1)
 		return (-1); */
 	//ft_choose_focal_lenght(&fdf);
+	if (ft_strcmp(fractal, "Sierpinski") == 0)
+		frct.fractal = SIERPINSKI;
+	if (frct.fractal == NONE)
+		return (ft_usage());
 	if (ft_mlx(&frct) == -1)
 		return (-1);
 	return (0);

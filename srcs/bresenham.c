@@ -6,37 +6,38 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 15:14:40 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/28 14:34:27 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/10/29 17:23:41 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+//bresenham(frct, A, B);
 
-void	bresenham(t_env *fdf, int color)
+void	bresenham(t_env *frct, t_point A, t_point B)
 {
-	fdf->dx = ft_abs(fdf->pix.xnext - fdf->pix.xcur);
-	fdf->sx = fdf->pix.xcur < fdf->pix.xnext ? 1 : -1;
-	fdf->dy = -(ft_abs(fdf->pix.ynext - fdf->pix.ycur));
-	fdf->sy = fdf->pix.ycur < fdf->pix.ynext ? 1 : -1;
-	fdf->err = fdf->dx + fdf->dy;
+	frct->dx = ft_abs(B.x - A.x);
+	frct->sx = A.x < B.x ? 1 : -1;
+	frct->dy = -(ft_abs(B.y - A.y));
+	frct->sy = A.y < B.y ? 1 : -1;
+	frct->err = frct->dx + frct->dy;
 	while (1)
 	{
-		if ((fdf->pix.ycur * fdf->width + fdf->pix.xcur < fdf->width
-				* fdf->height) && (fdf->pix.ycur >= 0 && fdf->pix.xcur >= 0)
-				&& (fdf->pix.ycur < fdf->height && fdf->pix.xcur < fdf->width))
-			fdf->data[fdf->pix.ycur * fdf->width + fdf->pix.xcur] = color;
-		if (fdf->pix.xcur == fdf->pix.xnext && fdf->pix.ycur == fdf->pix.ynext)
+		if ((A.y * frct->width + A.x < frct->width
+				* frct->height) && (A.y >= 0 && A.x >= 0)
+				&& (A.y < frct->height && A.x < frct->width))
+			frct->data[A.y * frct->width + A.x] = 0xFFFFFF;
+		if (A.x == B.x && A.y == B.y)
 			break ;
-		fdf->e2 = 2 * fdf->err;
-		if (fdf->e2 >= fdf->dy)
+		frct->e2 = 2 * frct->err;
+		if (frct->e2 >= frct->dy)
 		{
-			fdf->err += fdf->dy;
-			fdf->pix.xcur += fdf->sx;
+			frct->err += frct->dy;
+			A.x += frct->sx;
 		}
-		if (fdf->e2 <= fdf->dx)
+		if (frct->e2 <= frct->dx)
 		{
-			fdf->err += fdf->dx;
-			fdf->pix.ycur += fdf->sy;
+			frct->err += frct->dx;
+			A.y += frct->sy;
 		}
 	}
 }

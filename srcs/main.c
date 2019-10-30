@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 14:53:23 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/28 16:06:12 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/10/29 20:33:48 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,13 @@
 
 int		ft_error(int error)
 {
-	if (error == -2)
-		ft_putendl_fd("file is empty", 2);
-	else if (error == -3)
-		ft_putendl_fd("file format is invalide", 2);
-	else if (error == -4)
-		ft_putendl_fd("file not found or open() failed", 2);
-	else if (error == -5)
-		ft_putendl_fd("you tried to read over an infinite file", 2);
-	else
-		ft_putendl_fd("an error occured", 2);
+	ft_putendl_fd("an error occured", 2);
 	return (EXIT_FAILURE);
 }
 
 int		ft_usage(void)
 {
-	ft_putendl_fd("usage: ./fdf [map_file.fdf]", 2);
+	ft_putendl_fd("usage: ./fdf [fractal]\n\n\t\tSierpinski\n\t\tMandelbrot\n\t\tJulia", 2);
 	return (EXIT_FAILURE);
 }
 
