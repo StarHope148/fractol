@@ -6,7 +6,7 @@
 #    By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 11:22:48 by jcanteau          #+#    #+#              #
-#    Updated: 2019/10/29 20:39:32 by jcanteau         ###   ########.fr        #
+#    Updated: 2019/11/01 17:13:23 by jcanteau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC_NAME += bresenham.c
 SRC_NAME += key_hook.c
 SRC_NAME += controls.c
 SRC_NAME += mouse_hook.c
+SRC_NAME += mandelbrot.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -81,6 +82,6 @@ norm:
 
 ubuntu: $(OBJ)
 	make -C $(LIB_PATH)
-	$(CC) $(MLXFLAG) -lXext -lX11 -lmlx $(OBJ) $(LIB) -o $(NAME) /home/jonathan/Bureau/mlx_install/libmlx_Linux.a
+	$(CC) $(CFLAGS) $(MLXFLAG) $(OBJ) $(LIB) -o $(NAME) -lmlx -lXext -lX11 -lm
 
 .PHONY: clean fclean re all debug debug_clean norm ubuntu

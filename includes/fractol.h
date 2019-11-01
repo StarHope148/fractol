@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:34:34 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/30 14:18:29 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/01 17:15:28 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@
 # include "keys.h"
 # include "colors.h"
 
-typedef enum	e_fractal
+typedef enum	e_fractal_name
 {
-	NONE,
 	SIERPINSKI,
 	MANDELBROT,
 	JULIA
-}				t_fractal;
+}				t_fractal_name;
 
 typedef struct 	s_complex
 {
-    float 		real;
-    float 		imaginary;
+    double 		real;
+    double 		imaginary;
 } 				t_complex;
 
 typedef struct  s_point
@@ -74,5 +73,6 @@ int			ft_usage(void);
 int			ft_key_hook(int keycode, t_env *frct);
 int			ft_mouse_hook(int keycode, int x, int y, t_env *frct);
 void		ft_iteration(t_env *frct, int keycode);
+void   		mandelbrot(t_env *frct);
 
 #endif

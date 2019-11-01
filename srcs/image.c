@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:20:17 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/30 16:04:17 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/01 17:24:43 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,10 @@ int		ft_print(t_env *frct)
 			return (-1);
 	}
 	ft_bzero(frct->data, frct->width * frct->height * 4);
- 	if (ft_link_points(frct) == -1)
-		return (-1);
+ 	ft_link_points(frct);
 	mlx_put_image_to_window(frct->mlx_ptr, frct->win_ptr, frct->img_ptr, 0, 0);
-	/* if (ft_print_menu(frct) == -1)
-		return (-1);
-	ft_print_color_setup(frct); */
 	return (0);
 }
-
-/* void	ft_link_right(t_env *frct, int r, int c)
-{
-	frct->pix.xcur = frct->pro[r][c].px;
-	frct->pix.ycur = frct->pro[r][c].py;
-	frct->pix.xnext = frct->pro[r][c + 1].px;
-	frct->pix.ynext = frct->pro[r][c + 1].py;
-	bresenham(frct, frct->map.tab[r][c].color);
-}
-
-void	ft_link_down(t_env *frct, int r, int c)
-{
-	frct->pix.xcur = frct->pro[r][c].px;
-	frct->pix.ycur = frct->pro[r][c].py;
-	frct->pix.xnext = frct->pro[r + 1][c].px;
-	frct->pix.ynext = frct->pro[r + 1][c].py;
-	bresenham(frct, frct->map.tab[r][c].color);
-} */
 
 int		ft_link_points(t_env *frct)
 {
@@ -66,5 +44,7 @@ int		ft_link_points(t_env *frct)
 	pC.y = frct->height * 0.1;
 	if (frct->fractal == SIERPINSKI)
 		ft_sierpinski(frct, pA, pB, pC, frct->iter);
+	else if (frct->fractal == MANDELBROT)
+		mandelbrot(frct);
 	return (0);
 }
