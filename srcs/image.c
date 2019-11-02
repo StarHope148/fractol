@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:20:17 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/01 17:24:43 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/02 19:03:21 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,31 @@ int		ft_print(t_env *frct)
 		if (frct->data == NULL)
 			return (-1);
 	}
-	ft_bzero(frct->data, frct->width * frct->height * 4);
+	//ft_bzero(frct->data, frct->width * frct->height * 4);
  	ft_link_points(frct);
 	mlx_put_image_to_window(frct->mlx_ptr, frct->win_ptr, frct->img_ptr, 0, 0);
 	return (0);
+}
+
+void	ft_lines(t_env *frct)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < frct->height)
+	{
+		x = 0;
+		while (x < frct->width)
+		{
+			if (y == frct->height / 2)
+				frct->data[y * frct->width + x] = YELLOW;
+			else if (x == frct->width / 2)
+				frct->data[y * frct->width + x] = YELLOW;
+			x++;
+		}
+		y++;
+	}
 }
 
 int		ft_link_points(t_env *frct)
@@ -43,8 +64,9 @@ int		ft_link_points(t_env *frct)
 	pC.x = frct->width * 0.5;
 	pC.y = frct->height * 0.1;
 	if (frct->fractal == SIERPINSKI)
-		ft_sierpinski(frct, pA, pB, pC, frct->iter);
+		ft_sierpinski(frct, pA, pB, pC, frct->itermax);
 	else if (frct->fractal == MANDELBROT)
 		mandelbrot(frct);
+	ft_lines(frct);
 	return (0);
 }

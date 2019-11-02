@@ -6,25 +6,29 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 15:04:58 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/01 17:14:34 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/02 19:24:57 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void		ft_init_env(t_env *fdf)
+void		ft_init_env(t_env *frct)
 {
-	fdf->mlx_ptr = NULL;
-	fdf->win_ptr = NULL;
-	fdf->img_ptr = NULL;
-	fdf->data = NULL;
-	fdf->width = 500;
-	fdf->height = 500;
-	fdf->bpp = 0;
-	fdf->size_l = 0;
-	fdf->endian = 0;
-	fdf->fractal = 0;
-	fdf->iter = 0;
+	frct->mlx_ptr = NULL;
+	frct->win_ptr = NULL;
+	frct->img_ptr = NULL;
+	frct->data = NULL;
+	frct->width = WIDTH;
+	frct->height = HEIGHT;
+	frct->bpp = 0;
+	frct->size_l = 0;
+	frct->endian = 0;
+	frct->fractal = 0;
+	frct->itermax = 50;
+	frct->cx = -2.5;
+	frct->cy = -1.5;
+	frct->zoom = frct->width / 4;
+	frct->colormod = BLUE_MOD;
 }
 
 int			ft_fractol(char *fractal)

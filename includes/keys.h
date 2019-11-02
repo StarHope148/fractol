@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:46:47 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/29 19:12:27 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/02 17:30:45 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,11 @@
 # define RIGHT_ARROW 124
 # define DOWN_ARROW 125
 # define UP_ARROW 126
+
+# define MOUSE_LEFT 1
+# define MOUSE_RIGHT 2
+# define MOUSE_MID 3
+# define MOUSE_SCROLL_UP 4
+# define MOUSE_SCROLL_DOWN 5
 
 #endif

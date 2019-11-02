@@ -6,49 +6,69 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 16:03:36 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/01 17:55:44 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/02 19:40:11 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
+int		ft_rgb(int r, int g, int b)
+{
+	r *= 256 * 256;
+	g *= 256;
+	return (r + g + b);
+}
+
+void	ft_color(t_env *frct, int n, int x, int y)
+{
+	if (n == frct->itermax)
+		frct->data[y * frct->width + x] = BLACK;
+	else if (frct->colormod == BLUE_MOD)
+		frct->data[y * frct->width + x] = ft_rgb(0, 0, n * 255 / frct->itermax);
+	else if (frct->colormod == RED_MOD)
+		frct->data[y * frct->width + x] = ft_rgb(n * 255 / frct->itermax, 0, 0);
+	else if (frct->colormod == GREEN_MOD)
+		frct->data[y * frct->width + x] = ft_rgb(0, n * 255 / frct->itermax, 0);
+		/* else if (n > frct->itermax * 0.90)
+			frct->data[y * frct->width + x] = DARK_BLUE;
+		else if (n > frct->itermax * 0.70)
+			frct->data[y * frct->width + x] = BLUE;
+		else if (n > frct->itermax * 0.50)
+			frct->data[y * frct->width + x] = CYAN;
+		else
+			frct->data[y * frct->width + x] = BLACK; */
+}
+
 void    mandelbrot(t_env *frct)
 {
-    int 	max = 100;
     int    	x = 0;
     int		y = 0;
-    
-	double x1 = -2;
-
-	double y1 = -2;
-
-	double zoom = 150;
+    int		n;
+	t_complex val;
+	double tmp;
+	
     while (y < frct->height)
 	{
 		x = 0;
 		while (x < frct->width)
 		{
 				
-			double 	c_r = x / zoom + x1;
-			double 	c_i = y / zoom + y1;
-			double 	z_r = 0;
-			double 	z_i = 0;
-			int		n = 0;
-			while (n < max)
+			val.c_r = x / frct->zoom + frct->cx;
+			val.c_i = y / frct->zoom + frct->cy;
+			val.z_r = 0;
+			val.z_i = 0;
+			n = 0;
+			while (n < frct->itermax)
 			{
-				double tmp = z_r;
-				z_r = z_r*z_r - z_i*z_i + c_r;
-				z_i = 2*z_i*tmp + c_i;
+				tmp = val.z_r;
+				val.z_r = val.z_r * val.z_r - val.z_i * val.z_i + val.c_r;
+				val.z_i = 2 * val.z_i * tmp + val.c_i;
 				n++;
-				if (z_r*z_r + z_i*z_i > 4)
+				if (val.z_r * val.z_r + val.z_i * val.z_i > 4)
 					break;
 			}
-			if (n == max)
-				frct->data[y * frct->width + x] = WHITE;
-			else if (n < max)
-				frct->data[y * frct->width + x] = BLACK;
-			else
-				frct->data[y * frct->width + x] = RED;
+			ft_color(frct, n, x, y);
+			
 			x++;
 		}
 		y++;

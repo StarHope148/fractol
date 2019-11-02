@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:10:29 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/01 16:03:03 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/02 16:16:29 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int				ft_mlx(t_env *frct)
 									frct->height, "FRACTOL");
 	if (frct->win_ptr == NULL)
 		return (-1);
-	 if (ft_print(frct) == -1)
+	if (ft_print(frct) == -1)
 		return (-1);
 	mlx_mouse_hook(frct->win_ptr, ft_mouse_hook, frct);
 	mlx_hook(frct->win_ptr, 2, 0, ft_key_hook, frct);

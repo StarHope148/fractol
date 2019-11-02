@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:34:34 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/01 17:15:28 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/02 19:22:29 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@
 # include "keys.h"
 # include "colors.h"
 
+# define WIDTH 800
+# define HEIGHT 600
+
+# define MOVE 0.01
+
+typedef enum	e_color_mod
+{
+	BLUE_MOD,
+	RED_MOD,
+	GREEN_MOD
+}				t_color_mod;
+
 typedef enum	e_fractal_name
 {
 	SIERPINSKI,
@@ -31,8 +43,10 @@ typedef enum	e_fractal_name
 
 typedef struct 	s_complex
 {
-    double 		real;
-    double 		imaginary;
+    double 		c_r;
+    double 		c_i;
+	double		z_r;
+	double		z_i;
 } 				t_complex;
 
 typedef struct  s_point
@@ -53,7 +67,11 @@ typedef struct	s_env
 	int			size_l;
 	int			endian;
 	int			fractal;
-	int			iter;
+	int			itermax;
+	double		cx;
+	double		cy;
+	double		zoom;
+	int			colormod;
 	int			dx;
 	int			sx;
 	int			dy;
@@ -74,5 +92,7 @@ int			ft_key_hook(int keycode, t_env *frct);
 int			ft_mouse_hook(int keycode, int x, int y, t_env *frct);
 void		ft_iteration(t_env *frct, int keycode);
 void   		mandelbrot(t_env *frct);
+void		ft_move(t_env *frct, int keycode);
+void		ft_zoom(t_env *frct, int keycode);
 
 #endif

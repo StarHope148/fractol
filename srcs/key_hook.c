@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 15:41:09 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/10/30 14:21:51 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/02 19:23:11 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ void	ft_exit(t_env *frct)
 	exit(EXIT_SUCCESS);
 }
 
-/* void	ft_switch_color(t_env *fdf)
+void	ft_switch_color(t_env *frct)
 {
-	if (fdf->colormod >= CONTRAST)
-		fdf->colormod = DEFAULT_MAP_COLOR;
+	if (frct->colormod >= GREEN_MOD)
+		frct->colormod = BLUE_MOD;
 	else
-		fdf->colormod++;
-	ft_color_choice(fdf);
-} */
+		frct->colormod++;
+}
 
 int		ft_key_hook(int keycode, t_env *frct)
 {
@@ -46,6 +45,13 @@ int		ft_key_hook(int keycode, t_env *frct)
 		ft_exit(frct);
 	else if (keycode == MORE || keycode == LESS)
 		ft_iteration(frct, keycode);
+	else if (keycode == UP_ARROW || keycode == DOWN_ARROW
+			|| keycode == LEFT_ARROW || keycode == RIGHT_ARROW)
+		ft_move(frct, keycode);
+	else if (keycode == ONE_NUM_PAD || keycode == TWO_NUM_PAD)
+		ft_zoom(frct, keycode);
+	else if (keycode == THREE_NUM_PAD)
+		ft_switch_color(frct);
 	if (ft_print(frct) == -1)
 		return (-1);
 	return (0);
