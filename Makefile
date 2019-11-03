@@ -6,7 +6,7 @@
 #    By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 11:22:48 by jcanteau          #+#    #+#              #
-#    Updated: 2019/11/01 17:13:23 by jcanteau         ###   ########.fr        #
+#    Updated: 2019/11/03 18:23:55 by jcanteau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRC_NAME += bresenham.c
 SRC_NAME += key_hook.c
 SRC_NAME += controls.c
 SRC_NAME += mouse_hook.c
-SRC_NAME += mandelbrot.c
+SRC_NAME += ft_mandelbrot.c
+SRC_NAME += ft_julia.c
+SRC_NAME += color.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -54,7 +56,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C libft/.
-	$(CC) $(CFLAGS) $(MLXFLAG) $(OBJ) $(FRAMEWORK) $(LIB) -o $(NAME)
+	$(CC) $(CFLAGS) -Ofast $(MLXFLAG) $(OBJ) $(FRAMEWORK) $(LIB) -o $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEAD)
 	mkdir -p $(OBJ_PATH)

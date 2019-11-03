@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:20:17 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/02 19:03:21 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 18:15:30 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_print(t_env *frct)
 	return (0);
 }
 
-void	ft_lines(t_env *frct)
+void	ft_lines(t_env *frct)						//DEBUG
 {
 	int		x;
 	int		y;
@@ -66,7 +66,10 @@ int		ft_link_points(t_env *frct)
 	if (frct->fractal == SIERPINSKI)
 		ft_sierpinski(frct, pA, pB, pC, frct->itermax);
 	else if (frct->fractal == MANDELBROT)
-		mandelbrot(frct);
-	ft_lines(frct);
+		ft_mandelbrot(frct);
+	else if (frct->fractal == JULIA)
+		ft_julia(frct);
+
+	//ft_lines(frct);
 	return (0);
 }

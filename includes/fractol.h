@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:34:34 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/02 19:22:29 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 18:24:00 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@
 # define WIDTH 800
 # define HEIGHT 600
 
-# define MOVE 0.01
+# define MOVE_SPEED 0.08
+# define ZOOM_SPEED 1.06
+
+# define XMIN -1.25
+# define XMAX 1.25
+# define YMIN -1.25
+# define YMAX 1.25
 
 typedef enum	e_color_mod
 {
@@ -49,6 +55,14 @@ typedef struct 	s_complex
 	double		z_i;
 } 				t_complex;
 
+typedef struct 	s_complex2
+{
+    double 		cx;
+    double 		cy;
+	double		xn;
+	double		yn;
+} 				t_complex2;
+
 typedef struct  s_point
 {
     int     	x;
@@ -57,6 +71,7 @@ typedef struct  s_point
 
 typedef struct	s_env
 {
+	t_point		mouse;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*img_ptr;
@@ -68,10 +83,11 @@ typedef struct	s_env
 	int			endian;
 	int			fractal;
 	int			itermax;
-	double		cx;
-	double		cy;
+	double		hor;
+	double		vert;
 	double		zoom;
-	int			colormod;
+	char		colormod;
+	char		motion;
 	int			dx;
 	int			sx;
 	int			dy;
@@ -91,8 +107,13 @@ int			ft_usage(void);
 int			ft_key_hook(int keycode, t_env *frct);
 int			ft_mouse_hook(int keycode, int x, int y, t_env *frct);
 void		ft_iteration(t_env *frct, int keycode);
-void   		mandelbrot(t_env *frct);
+void		ft_mandelbrot(t_env *frct);
+void		ft_julia(t_env *frct);
 void		ft_move(t_env *frct, int keycode);
 void		ft_zoom(t_env *frct, int keycode);
+void		ft_color(t_env *frct, int n, int x, int y);
+void		ft_default(t_env *frct);
+int			ft_mouse_motion(int x, int y, t_env *frct);
+
 
 #endif

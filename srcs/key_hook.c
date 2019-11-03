@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 15:41:09 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/02 19:23:11 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 16:27:07 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int		ft_key_hook(int keycode, t_env *frct)
 		ft_zoom(frct, keycode);
 	else if (keycode == THREE_NUM_PAD)
 		ft_switch_color(frct);
+	else if (keycode == ZERO_NUM_PAD)
+		ft_default(frct);
 	if (ft_print(frct) == -1)
 		return (-1);
 	return (0);
