@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:10:29 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 18:20:18 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 20:22:12 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int				ft_mlx(t_env *frct)
 	if (ft_print(frct) == -1)
 		return (-1);
 	mlx_hook(frct->win_ptr, 2, 0, ft_key_hook, frct);
-	mlx_mouse_hook(frct->win_ptr, ft_mouse_hook, frct);	
+	mlx_mouse_hook(frct->win_ptr, ft_mouse_hook, frct);
 	mlx_hook(frct->win_ptr, 6, 1, ft_mouse_motion, frct);
 	mlx_loop(frct->mlx_ptr);
 	return (0);

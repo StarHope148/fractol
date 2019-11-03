@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 15:04:58 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 19:25:40 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 21:42:47 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void		ft_init_fractal(t_env *frct)
 		frct->xmax = 0.5;
 		frct->ymin = -1.25;
 		frct->ymax = 1.25;
+		frct->hor = 0;
+		frct->vert = 0;
 	}
 	else if (frct->fractal == JULIA)
 	{
@@ -27,6 +29,8 @@ void		ft_init_fractal(t_env *frct)
 		frct->xmax = 1.25;
 		frct->ymin = -1.25;
 		frct->ymax = 1.25;
+		frct->hor = 0;
+		frct->vert = 0;
 	}
 	else if (frct->fractal == BURNINGSHIP)
 	{
@@ -61,6 +65,7 @@ void		ft_init_env(t_env *frct)
 	frct->endian = 0;
 	frct->fractal = 0;
 	frct->itermax = 50;
+	frct->n = 0;
 	frct->hor = 0;
 	frct->vert = 0;
 	frct->zoom = 1;
@@ -70,22 +75,39 @@ void		ft_init_env(t_env *frct)
 	frct->mouse.y = 57;
 }
 
+void		ft_controls_console(void)
+{
+	ft_putstr("\033[1;31m ----------------------------------------");
+	ft_putstr("--------------------------------------------------\n");
+	ft_putendl("\033[1;34m ITERATION MAX		:\033[1;32m [+][-] num_pad");
+	ft_putendl("\033[1;34m ZOOM			:\033[1;32m scroll");
+	ft_putendl("\033[1;34m NAVIGATE		:\033[1;32m arrows");
+	ft_putendl("\033[1;34m ACTIVATE CURSOR PARAM	:\033[1;32m left click");
+	ft_putendl("\033[1;34m RESET VIEW		:\033[1;32m [0] num_pad");
+	ft_putendl("\033[1;34m CHANGE COLOR		:\033[1;32m [3] num_pad");
+	ft_putendl("\033[1;34m CHANGE FRACTAL		:\033[1;32m [5] num_pad");
+	ft_putstr("\033[1;31m ----------------------------------------");
+	ft_putstr("--------------------------------------------------\n");
+}
+
 int			ft_fractol(char *fractal)
 {
 	t_env		frct;
 
 	ft_init_env(&frct);
-	if (ft_strcmp(fractal, "Sierpinski") == 0)
-		frct.fractal = SIERPINSKI;
-	else if (ft_strcmp(fractal, "Mandelbrot") == 0 || ft_strcmp(fractal, "mandelbrot") == 0)
+	if (ft_strcmp(fractal, "Mandelbrot") == 0
+			|| ft_strcmp(fractal, "mandelbrot") == 0)
 		frct.fractal = MANDELBROT;
-	else if (ft_strcmp(fractal, "Julia") == 0 || ft_strcmp(fractal, "julia") == 0)
+	else if (ft_strcmp(fractal, "Julia") == 0
+			|| ft_strcmp(fractal, "julia") == 0)
 		frct.fractal = JULIA;
-	else if (ft_strcmp(fractal, "Burningship") == 0 || ft_strcmp(fractal, "burningship") == 0)
+	else if (ft_strcmp(fractal, "Burningship") == 0
+			|| ft_strcmp(fractal, "burningship") == 0)
 		frct.fractal = BURNINGSHIP;
 	else
 		return (ft_usage());
 	ft_init_fractal(&frct);
+	ft_controls_console();
 	if (ft_mlx(&frct) == -1)
 		return (-1);
 	return (0);

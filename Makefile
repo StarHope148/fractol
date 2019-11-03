@@ -6,7 +6,7 @@
 #    By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 11:22:48 by jcanteau          #+#    #+#              #
-#    Updated: 2019/11/03 18:49:10 by jcanteau         ###   ########.fr        #
+#    Updated: 2019/11/03 20:50:23 by jcanteau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,6 @@ SRC_NAME += main.c
 SRC_NAME += fractol.c
 SRC_NAME += mlx_start_up.c
 SRC_NAME += image.c
-SRC_NAME += sierpinski.c
-SRC_NAME += ft_draw_triangle.c
-SRC_NAME += bresenham.c
 SRC_NAME += key_hook.c
 SRC_NAME += controls.c
 SRC_NAME += mouse_hook.c

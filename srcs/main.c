@@ -6,13 +6,13 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 14:53:23 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 19:40:15 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 21:45:24 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int		ft_error()
+int		ft_error(void)
 {
 	ft_putendl_fd("an error occured", 2);
 	return (EXIT_FAILURE);

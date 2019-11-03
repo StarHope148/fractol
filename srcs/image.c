@@ -6,17 +6,43 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:20:17 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 18:48:48 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 21:34:34 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
+void	ft_UI(t_env *frct)
+{
+	char	*iter;
+
+	iter = ft_itoa(frct->itermax);
+	if (frct->fractal == MANDELBROT)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 10, GRAY,
+						"MANDELBROT SET");
+	else if (frct->fractal == JULIA)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 10, GRAY,
+						"JULIA SET");
+	else if (frct->fractal == BURNINGSHIP)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 10, GRAY,
+						"BURNINGSHIP SET");
+	mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 30, GRAY, "ITERATIONS :");
+	mlx_string_put(frct->mlx_ptr, frct->win_ptr, 140, 30, GRAY, iter);
+	free(iter);
+	if (frct->motion == 0)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 50, GRAY,
+						"MOTION OFF");
+	else
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 50, GRAY,
+						"MOTION ON");
+}
+
 int		ft_print(t_env *frct)
 {
 	if (frct->img_ptr == NULL)
 	{
-		frct->img_ptr = mlx_new_image(frct->mlx_ptr, frct->width, frct->height);
+		frct->img_ptr = mlx_new_image(frct->mlx_ptr,
+										frct->width, frct->height);
 		if (frct->img_ptr == NULL)
 			return (-1);
 		frct->data = (int *)mlx_get_data_addr(frct->img_ptr, &frct->bpp,
@@ -24,9 +50,9 @@ int		ft_print(t_env *frct)
 		if (frct->data == NULL)
 			return (-1);
 	}
-	//ft_bzero(frct->data, frct->width * frct->height * 4);
- 	ft_link_points(frct);
+	ft_draw(frct);
 	mlx_put_image_to_window(frct->mlx_ptr, frct->win_ptr, frct->img_ptr, 0, 0);
+	ft_UI(frct);
 	return (0);
 }
 
@@ -51,21 +77,9 @@ void	ft_lines(t_env *frct)						//DEBUG
 	}
 }
 
-int		ft_link_points(t_env *frct)
+int		ft_draw(t_env *frct)
 {
-	t_point pA;
-	t_point pB;
-	t_point pC;
-
-	pA.x = frct->width * 0.1;
-	pA.y = frct->height * 0.9;
-	pB.x = frct->width * 0.9;
-	pB.y = frct->height * 0.9;
-	pC.x = frct->width * 0.5;
-	pC.y = frct->height * 0.1;
-	if (frct->fractal == SIERPINSKI)
-		ft_sierpinski(frct, pA, pB, pC, frct->itermax);
-	else if (frct->fractal == MANDELBROT)
+	if (frct->fractal == MANDELBROT)
 		ft_mandelbrot(frct);
 	else if (frct->fractal == JULIA)
 		ft_julia(frct);
