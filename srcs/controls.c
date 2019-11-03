@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:25:14 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 16:58:36 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 19:36:20 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,28 @@ void		ft_iteration(t_env *frct, int keycode)
 
 void	ft_move(t_env *frct, int keycode)
 {
-	if (keycode == LEFT_ARROW)
-			frct->hor -= MOVE_SPEED * frct->zoom;
-	else if (keycode == RIGHT_ARROW)
-			frct->hor += MOVE_SPEED * frct->zoom;
-	else if (keycode == UP_ARROW)
-			frct->vert += MOVE_SPEED * frct->zoom;
-	else if (keycode == DOWN_ARROW)
-			frct->vert -= MOVE_SPEED * frct->zoom;
+	if (frct->fractal == BURNINGSHIP)
+	{
+		if (keycode == LEFT_ARROW)
+				frct->hor -= MOVE_SPEED * frct->zoom;
+		else if (keycode == RIGHT_ARROW)
+				frct->hor += MOVE_SPEED * frct->zoom;
+		else if (keycode == UP_ARROW)
+				frct->vert -= MOVE_SPEED * frct->zoom;
+		else if (keycode == DOWN_ARROW)
+				frct->vert += MOVE_SPEED * frct->zoom;
+	}
+	else
+	{
+		if (keycode == LEFT_ARROW)
+				frct->hor -= MOVE_SPEED * frct->zoom;
+		else if (keycode == RIGHT_ARROW)
+				frct->hor += MOVE_SPEED * frct->zoom;
+		else if (keycode == UP_ARROW)
+				frct->vert += MOVE_SPEED * frct->zoom;
+		else if (keycode == DOWN_ARROW)
+				frct->vert -= MOVE_SPEED * frct->zoom;
+	}
 	printf("hor = %.3f\t\tzoom = %.5f\nvert = %.3f\n\n", frct->hor, frct->zoom, frct->vert);		//DEBUG
 }
 
@@ -39,13 +53,9 @@ void	ft_zoom(t_env *frct, int keycode)
 	if (keycode == ONE_NUM_PAD)
 	{
 		frct->zoom *= 1.05;
-		frct->hor *= 1.0 / 1.05;
-		frct->vert *= 1.0 / 1.05;
 	}
 	else
 	{
 		frct->zoom *= 1.0 / 1.05;
-		frct->hor *= 1.05;
-		frct->vert *= 1.05;
 	}
 }

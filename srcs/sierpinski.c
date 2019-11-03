@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:34:30 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 15:35:57 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 18:40:04 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void         ft_sierpinski(t_env *frct, t_point p0, t_point p1, t_point p2, int 
     t_point     pB;
     t_point     pC;
 
+    if (limit > 10)
+        limit = 10;
     if (limit > 0)
     {
         pA.x = (p0.x + p1.x) / 2;

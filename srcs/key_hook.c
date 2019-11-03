@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 15:41:09 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 16:27:07 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 19:39:07 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 
 void	ft_exit(t_env *frct)
 {
-/* 	int		r;
-
-	r = 0;
-	while (r < fdf->map.nbl)
-	{
-		free(fdf->map.tab[r]);
-		free(fdf->pro[r]);
-		r++;
-	}
-	free(fdf->map.tab);
-	free(fdf->pro);
-	mlx_destroy_image(fdf->mlx_ptr, fdf->menu.backmenu_ptr); */
 	mlx_destroy_image(frct->mlx_ptr, frct->img_ptr);
 	mlx_destroy_window(frct->mlx_ptr, frct->win_ptr);
 	exit(EXIT_SUCCESS);

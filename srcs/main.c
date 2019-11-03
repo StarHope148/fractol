@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 14:53:23 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/01 17:13:51 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/03 19:40:15 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int		ft_error()
 
 int		ft_usage(void)
 {
-	ft_putendl_fd("usage: ./fdf [fractal]\n\n-> Sierpinski\n-> Mandelbrot\n-> Julia", 2);
+	ft_putendl_fd("usage: ./fdf [fractal]\n\n-> Sierpinski\n-> Mandelbrot", 2);
+	ft_putendl_fd("-> Julia\n-> Burningship", 2);
 	return (EXIT_FAILURE);
 }
 
@@ -32,4 +33,3 @@ int		main(int ac, char **av)
 		return (-1);
 	return (0);
 }
-
