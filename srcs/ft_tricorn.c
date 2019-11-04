@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_burningship.c                                   :+:      :+:    :+:   */
+/*   ft_tricorn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/03 15:10:27 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 15:31:09 by jcanteau         ###   ########.fr       */
+/*   Created: 2019/11/04 18:18:20 by jcanteau          #+#    #+#             */
+/*   Updated: 2019/11/04 18:28:03 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	ft_burningship_calc(t_env *frct, int x, int y)
+void	ft_tricorn_calc(t_env *frct, int x, int y)
 {
 	t_complex	v;
 	double		tmp;
@@ -27,13 +27,13 @@ void	ft_burningship_calc(t_env *frct, int x, int y)
 	while (((v.xn * v.xn + v.yn * v.yn) < 4) && (frct->n < frct->itermax))
 	{
 		tmp = v.xn;
-		v.xn = fabs(tmp * tmp - v.yn * v.yn + v.cx);
-		v.yn = fabs(2 * tmp * v.yn + v.cy);
+		v.xn = tmp * tmp - v.yn * v.yn + v.cx;
+		v.yn = -2 * tmp * v.yn + v.cy;
 		frct->n++;
 	}
 }
 
-void	ft_burningship(t_env *frct)
+void	ft_tricorn(t_env *frct)
 {
 	int			x;
 	int			y;
@@ -44,7 +44,7 @@ void	ft_burningship(t_env *frct)
 		x = 0;
 		while (x < frct->width)
 		{
-			ft_burningship_calc(frct, x, y);
+			ft_tricorn_calc(frct, x, y);
 			ft_color(frct, frct->n, x, y);
 			x++;
 		}

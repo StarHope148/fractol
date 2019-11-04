@@ -6,7 +6,7 @@
 #    By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 11:22:48 by jcanteau          #+#    #+#              #
-#    Updated: 2019/11/04 13:11:30 by jcanteau         ###   ########.fr        #
+#    Updated: 2019/11/04 18:26:32 by jcanteau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,9 @@ SRC_NAME += ft_julia.c
 SRC_NAME += ft_burningship.c
 SRC_NAME += color.c
 SRC_NAME += setup.c
+SRC_NAME += zoom.c
+SRC_NAME += ft_mandelbrot_duo.c
+SRC_NAME += ft_tricorn.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

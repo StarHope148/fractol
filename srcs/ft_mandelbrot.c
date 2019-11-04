@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 15:10:27 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 20:54:58 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:17:57 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	ft_mandelbrot_calc(t_env *frct, int x, int y)
 	double		tmp;
 
 	v.cx = (x * (frct->xmax - frct->xmin)
-			/ frct->width * frct->zoom + frct->xmin) + frct->hor;
+			/ frct->width + frct->xmin) * frct->zoom + frct->hor;
 	v.cy = (y * (frct->ymin - frct->ymax)
-			/ frct->height * frct->zoom + frct->ymax) + frct->vert;
+			/ frct->height + frct->ymax) * frct->zoom + frct->vert;
 	v.xn = 0;
 	v.yn = 0;
 	frct->n = 0;

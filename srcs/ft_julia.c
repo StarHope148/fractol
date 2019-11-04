@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 16:31:36 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 13:15:13 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 15:33:04 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	ft_julia_calc(t_env *frct, int x, int y)
 	double		tmp;
 
 	v.xn = (x * (frct->xmax - frct->xmin)
-			/ frct->width * frct->zoom + frct->xmin) + frct->hor;
+			/ frct->width + frct->xmin) * frct->zoom + frct->hor;
 	v.yn = (y * (frct->ymin - frct->ymax)
-			/ frct->height * frct->zoom + frct->ymax) + frct->vert;
+			/ frct->height + frct->ymax) * frct->zoom + frct->vert;
 	v.cx = frct->mouse.y * 0.005;
 	v.cy = frct->mouse.x * 0.005;
 	frct->n = 0;

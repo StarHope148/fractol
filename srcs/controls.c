@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:25:14 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 14:23:50 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:21:02 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,40 +22,22 @@ void	ft_iteration(t_env *frct, int keycode)
 
 void	ft_move(t_env *frct, int keycode)
 {
-	if (frct->fractal == BURNINGSHIP)
-	{
-		if (keycode == LEFT_ARROW)
-			frct->hor -= MOVE_SPEED * frct->zoom;
-		else if (keycode == RIGHT_ARROW)
-			frct->hor += MOVE_SPEED * frct->zoom;
-		else if (keycode == UP_ARROW)
-			frct->vert -= MOVE_SPEED * frct->zoom;
-		else if (keycode == DOWN_ARROW)
-			frct->vert += MOVE_SPEED * frct->zoom;
-	}
-	else
-	{
-		if (keycode == LEFT_ARROW)
-			frct->hor -= MOVE_SPEED * frct->zoom;
-		else if (keycode == RIGHT_ARROW)
-			frct->hor += MOVE_SPEED * frct->zoom;
-		else if (keycode == UP_ARROW)
-			frct->vert += MOVE_SPEED * frct->zoom;
-		else if (keycode == DOWN_ARROW)
-			frct->vert -= MOVE_SPEED * frct->zoom;
-	}
+	if (keycode == LEFT_ARROW)
+		frct->hor -= MOVE_SPEED * frct->zoom;
+	else if (keycode == RIGHT_ARROW)
+		frct->hor += MOVE_SPEED * frct->zoom;
+	else if (keycode == UP_ARROW)
+		frct->vert += MOVE_SPEED * frct->zoom;
+	else if (keycode == DOWN_ARROW)
+		frct->vert -= MOVE_SPEED * frct->zoom;
 }
 
 void	ft_zoom(t_env *frct, int keycode)
 {
 	if (keycode == TWO_NUM_PAD)
-	{
 		frct->zoom *= ZOOM_SPEED;
-	}
 	else
-	{
 		frct->zoom *= 1.0 / ZOOM_SPEED;
-	}
 }
 
 void	ft_switch_color(t_env *frct)
@@ -68,7 +50,7 @@ void	ft_switch_color(t_env *frct)
 
 void	ft_switch_fractal(t_env *frct)
 {
-	if (frct->fractal == BURNINGSHIP)
+	if (frct->fractal == 4)
 		frct->fractal = 0;
 	else
 		frct->fractal++;

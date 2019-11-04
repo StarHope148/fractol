@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:20:17 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 14:08:43 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:37:22 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@ void	ft_ui_next(t_env *frct)
 	char	*x_coord;
 	char	*y_coord;
 
-	x_coord = ft_itoa(frct->mouse.x);
-	y_coord = ft_itoa(frct->mouse.y);
+	if ((x_coord = ft_itoa(frct->mouse.x)) == NULL)
+		ft_exit(frct);
+	if ((y_coord = ft_itoa(frct->mouse.y)) == NULL)
+	{
+		free(x_coord);
+		ft_exit(frct);
+	}
 	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
 					frct->height * 0.08, GRAY, "X :");
 	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.06,
@@ -29,6 +34,16 @@ void	ft_ui_next(t_env *frct)
 					frct->height * 0.1, GRAY, y_coord);
 	free(x_coord);
 	free(y_coord);
+}
+
+void	ft_show_motion_mod(t_env *frct)
+{
+	if (frct->motion == 0)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.06, GRAY, "MOTION OFF");
+	else
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.06, GRAY, "MOTION ON");
 }
 
 void	ft_ui(t_env *frct)
@@ -45,17 +60,18 @@ void	ft_ui(t_env *frct)
 	else if (frct->fractal == BURNINGSHIP)
 		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
 						frct->height * 0.01, DODGER_BLUE, "BURNINGSHIP SET");
+	else if (frct->fractal == MULTIBROT)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "MULTIBROT 2 SET");
+	else if (frct->fractal == TRICORN)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "TRICORN SET");
 	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
 					frct->height * 0.04, GRAY, "ITERATIONS :");
 	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.15,
 					frct->height * 0.04, GRAY, iter);
 	free(iter);
-	if (frct->motion == 0)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
-						frct->height * 0.06, GRAY, "MOTION OFF");
-	else
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
-						frct->height * 0.06, GRAY, "MOTION ON");
+	ft_show_motion_mod(frct);
 	ft_ui_next(frct);
 }
 
@@ -78,27 +94,6 @@ int		ft_print(t_env *frct)
 	return (0);
 }
 
-void	ft_lines(t_env *frct)						//DEBUG
-{
-	int		x;
-	int		y;
-
-	y = 0;
-	while (y < frct->height)
-	{
-		x = 0;
-		while (x < frct->width)
-		{
-			if (y == frct->height / 2)
-				frct->data[y * frct->width + x] = YELLOW;
-			else if (x == frct->width / 2)
-				frct->data[y * frct->width + x] = YELLOW;
-			x++;
-		}
-		y++;
-	}
-}
-
 int		ft_draw(t_env *frct)
 {
 	if (frct->fractal == MANDELBROT)
@@ -107,6 +102,9 @@ int		ft_draw(t_env *frct)
 		ft_julia(frct);
 	else if (frct->fractal == BURNINGSHIP)
 		ft_burningship(frct);
-	//ft_lines(frct);
+	else if (frct->fractal == MULTIBROT)
+		ft_mandelbrot_duo(frct);
+	else if (frct->fractal == TRICORN)
+		ft_tricorn(frct);
 	return (0);
 }

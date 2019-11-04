@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 15:04:58 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 13:48:02 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:31:06 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ int			ft_fractol(char *fractal)
 	else if (ft_strcmp(fractal, "Burningship") == 0
 			|| ft_strcmp(fractal, "burningship") == 0)
 		frct.fractal = BURNINGSHIP;
+	else if (ft_strcmp(fractal, "Multibrot") == 0
+			|| ft_strcmp(fractal, "multibrot") == 0)
+		frct.fractal = MULTIBROT;
+	else if (ft_strcmp(fractal, "Tricorn") == 0
+			|| ft_strcmp(fractal, "tricorn") == 0)
+		frct.fractal = TRICORN;
 	else
 		return (ft_usage());
 	ft_init_fractal(&frct);
