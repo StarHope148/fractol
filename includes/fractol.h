@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:34:34 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 14:11:34 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:24:09 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ void			ft_color(t_env *frct, int n, int x, int y);
 void			ft_default(t_env *frct);
 int				ft_mouse_motion(int x, int y, t_env *frct);
 void			ft_init_fractal(t_env *frct);
+void			ft_switch_color(t_env *frct);
+void			ft_switch_fractal(t_env *frct);
 
 #endif

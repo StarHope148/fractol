@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 15:41:09 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 13:46:02 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:24:20 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,6 @@ void	ft_exit(t_env *frct)
 	mlx_destroy_image(frct->mlx_ptr, frct->img_ptr);
 	mlx_destroy_window(frct->mlx_ptr, frct->win_ptr);
 	exit(EXIT_SUCCESS);
-}
-
-void	ft_switch_color(t_env *frct)
-{
-	if (frct->colormod >= RAND_MOD)
-		frct->colormod = 0;
-	else
-		frct->colormod++;
-}
-
-void	ft_switch_fractal(t_env *frct)
-{
-	if (frct->fractal == BURNINGSHIP)
-		frct->fractal = 0;
-	else
-		frct->fractal++;
-	ft_init_fractal(frct);
-	if (frct->fractal != JULIA)
-		frct->motion = 0;
 }
 
 int		ft_key_hook(int keycode, t_env *frct)

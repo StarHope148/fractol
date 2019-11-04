@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 20:37:25 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 14:12:07 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:27:49 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_motion_mod(t_env *frct)
 
 void	ft_zoom_mouse(int mousekey, int x, int y, t_env *frct)
 {
-	double oldzoom;
+	double oldzoom;			//DEBUG
 
 	(void)x;
 	(void)y;
@@ -65,7 +65,7 @@ int		ft_mouse_hook(int mousekey, int x, int y, t_env *frct)
 		write(1, " and y : ", 9);
 		ft_putnbr(y);
 		write(1, "\n", 1);
-		printf("hor = %.2f\tvert = %.2f\tzoom = %.2f\n", frct->hor, frct->vert, frct->zoom);
+		printf("hor = %.2f\tvert = %.2f\tzoom = %.2f\n", frct->hor, frct->vert, frct->zoom);		//DEBUG
 	}
 	if (ft_print(frct) == -1)
 		return (-1);

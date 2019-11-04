@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:08:30 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 14:14:23 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:17:16 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 
 void		ft_setup_burningship(t_env *frct)
 {
-	/* frct->xmin = -0.05;
-	frct->xmax = 0.05;
-	frct->ymin = 0.05;
-	frct->ymax = -0.05; */
 	frct->xmin = -1.25;
 	frct->xmax = 1.25;
 	frct->ymin = 1.25;
 	frct->ymax = -1.25;
-
 	frct->zoom = 0.05;
 	frct->hor = -0.57;
 	frct->vert = 1.15;
