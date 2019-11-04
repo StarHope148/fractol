@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:34:34 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 18:34:00 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:45:54 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ void			ft_switch_color(t_env *frct);
 void			ft_switch_fractal(t_env *frct);
 void			ft_exit(t_env *frct);
 void			ft_zoom_mouse(int mousekey, int x, int y, t_env *frct);
+void			ft_show_fractal_name(t_env *frct);
 
 #endif

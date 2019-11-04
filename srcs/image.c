@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:20:17 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 18:37:22 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:48:44 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,19 @@ void	ft_ui(t_env *frct)
 {
 	char	*iter;
 
-	iter = ft_itoa(frct->itermax);
-	if (frct->fractal == MANDELBROT)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
-						frct->height * 0.01, DODGER_BLUE, "MANDELBROT SET");
-	else if (frct->fractal == JULIA)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
-						frct->height * 0.01, DODGER_BLUE, "JULIA SET");
-	else if (frct->fractal == BURNINGSHIP)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
-						frct->height * 0.01, DODGER_BLUE, "BURNINGSHIP SET");
-	else if (frct->fractal == MULTIBROT)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
-						frct->height * 0.01, DODGER_BLUE, "MULTIBROT 2 SET");
-	else if (frct->fractal == TRICORN)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
-						frct->height * 0.01, DODGER_BLUE, "TRICORN SET");
+	if ((iter = ft_itoa(frct->itermax)) == NULL)
+		ft_exit(frct);
 	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
 					frct->height * 0.04, GRAY, "ITERATIONS :");
 	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.15,
 					frct->height * 0.04, GRAY, iter);
 	free(iter);
-	ft_show_motion_mod(frct);
-	ft_ui_next(frct);
+	ft_show_fractal_name(frct);
+	if (frct->fractal == JULIA)
+	{
+		ft_show_motion_mod(frct);
+		ft_ui_next(frct);
+	}
 }
 
 int		ft_print(t_env *frct)

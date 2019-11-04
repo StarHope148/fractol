@@ -6,11 +6,30 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:08:30 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/04 18:31:10 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 18:46:15 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+void		ft_show_fractal_name(t_env *frct)
+{
+	if (frct->fractal == MANDELBROT)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "MANDELBROT SET");
+	else if (frct->fractal == JULIA)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "JULIA SET");
+	else if (frct->fractal == BURNINGSHIP)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "BURNINGSHIP SET");
+	else if (frct->fractal == MULTIBROT)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "MULTIBROT 2 SET");
+	else if (frct->fractal == TRICORN)
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "TRICORN SET");
+}
 
 void		ft_setup_burningship(t_env *frct)
 {
