@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 16:31:36 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 20:53:36 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 13:15:13 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	ft_julia_calc(t_env *frct, int x, int y)
 void	ft_julia(t_env *frct)
 {
 	int			x;
-    int			y;
+	int			y;
 
 	y = 0;
-    while (y < frct->height)
+	while (y < frct->height)
 	{
 		x = 0;
 		while (x < frct->width)

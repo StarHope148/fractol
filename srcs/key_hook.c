@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 15:41:09 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 21:09:36 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 13:46:02 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_switch_fractal(t_env *frct)
 	else
 		frct->fractal++;
 	ft_init_fractal(frct);
+	if (frct->fractal != JULIA)
+		frct->motion = 0;
 }
 
 int		ft_key_hook(int keycode, t_env *frct)

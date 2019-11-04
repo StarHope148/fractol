@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:25:14 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 20:37:52 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 13:40:15 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_iteration(t_env *frct, int keycode)
 		frct->itermax++;
 	else if (frct->itermax > 0)
 		frct->itermax--;
-	//printf("iteration : %d\n", frct->itermax);					//DEBUG
 }
 
 void	ft_move(t_env *frct, int keycode)
@@ -45,7 +44,6 @@ void	ft_move(t_env *frct, int keycode)
 		else if (keycode == DOWN_ARROW)
 			frct->vert -= MOVE_SPEED * frct->zoom;
 	}
-	//printf("hor = %.3f\t\tzoom = %.5f\nvert = %.3f\n\n", frct->hor, frct->zoom, frct->vert);		//DEBUG
 }
 
 void	ft_zoom(t_env *frct, int keycode)

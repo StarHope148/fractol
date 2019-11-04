@@ -6,35 +6,57 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:20:17 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 21:34:34 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:08:43 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	ft_UI(t_env *frct)
+void	ft_ui_next(t_env *frct)
+{
+	char	*x_coord;
+	char	*y_coord;
+
+	x_coord = ft_itoa(frct->mouse.x);
+	y_coord = ft_itoa(frct->mouse.y);
+	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+					frct->height * 0.08, GRAY, "X :");
+	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.06,
+					frct->height * 0.08, GRAY, x_coord);
+	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+					frct->height * 0.1, GRAY, "Y :");
+	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.06,
+					frct->height * 0.1, GRAY, y_coord);
+	free(x_coord);
+	free(y_coord);
+}
+
+void	ft_ui(t_env *frct)
 {
 	char	*iter;
 
 	iter = ft_itoa(frct->itermax);
 	if (frct->fractal == MANDELBROT)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 10, GRAY,
-						"MANDELBROT SET");
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "MANDELBROT SET");
 	else if (frct->fractal == JULIA)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 10, GRAY,
-						"JULIA SET");
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "JULIA SET");
 	else if (frct->fractal == BURNINGSHIP)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 10, GRAY,
-						"BURNINGSHIP SET");
-	mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 30, GRAY, "ITERATIONS :");
-	mlx_string_put(frct->mlx_ptr, frct->win_ptr, 140, 30, GRAY, iter);
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.01, DODGER_BLUE, "BURNINGSHIP SET");
+	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+					frct->height * 0.04, GRAY, "ITERATIONS :");
+	mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.15,
+					frct->height * 0.04, GRAY, iter);
 	free(iter);
 	if (frct->motion == 0)
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 50, GRAY,
-						"MOTION OFF");
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.06, GRAY, "MOTION OFF");
 	else
-		mlx_string_put(frct->mlx_ptr, frct->win_ptr, 10, 50, GRAY,
-						"MOTION ON");
+		mlx_string_put(frct->mlx_ptr, frct->win_ptr, frct->width * 0.02,
+						frct->height * 0.06, GRAY, "MOTION ON");
+	ft_ui_next(frct);
 }
 
 int		ft_print(t_env *frct)
@@ -52,7 +74,7 @@ int		ft_print(t_env *frct)
 	}
 	ft_draw(frct);
 	mlx_put_image_to_window(frct->mlx_ptr, frct->win_ptr, frct->img_ptr, 0, 0);
-	ft_UI(frct);
+	ft_ui(frct);
 	return (0);
 }
 

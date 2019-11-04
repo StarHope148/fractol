@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 14:34:34 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 21:09:53 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:11:34 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "keys.h"
 # include "colors.h"
 
-//# include <stdio.h>				//DEBUG
+# include <stdio.h>				//DEBUG
 # define WIDTH 1000
 # define HEIGHT 800
 
@@ -81,12 +81,6 @@ typedef struct	s_env
 	double		ymin;
 	double		ymax;
 	int			n;
-	int			dx;
-	int			sx;
-	int			dy;
-	int			sy;
-	int			err;
-	int			e2;
 }				t_env;
 
 int				ft_fractol(char *filename);

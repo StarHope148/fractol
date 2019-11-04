@@ -6,7 +6,7 @@
 /*   By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 15:10:27 by jcanteau          #+#    #+#             */
-/*   Updated: 2019/11/03 20:52:46 by jcanteau         ###   ########.fr       */
+/*   Updated: 2019/11/04 13:15:27 by jcanteau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_burningship(t_env *frct)
 	int			y;
 
 	y = 0;
-    while (y < frct->height)
+	while (y < frct->height)
 	{
 		x = 0;
 		while (x < frct->width)
