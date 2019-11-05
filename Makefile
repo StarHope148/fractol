@@ -6,7 +6,7 @@
 #    By: jcanteau <jcanteau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/02 11:22:48 by jcanteau          #+#    #+#              #
-#    Updated: 2019/11/04 18:26:32 by jcanteau         ###   ########.fr        #
+#    Updated: 2019/11/05 13:26:31 by jcanteau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fractol
 
 INC_NAME += fractol.h
 INC_NAME += keys.h
-SRC_NAMe += colors.h
+INC_NAME += colors.h
 
 SRC_NAME += main.c
 SRC_NAME += fractol.c
